@@ -1,6 +1,7 @@
 roach = {}
 roach.width = 64
 roach.height = 128
+groundHeight = 460
 
 function roach.loadAssets()
 	roach.img = love.graphics.newImage("assets/roach.png")
@@ -16,11 +17,106 @@ end
 function roach.init()
 	roach.x = 0
 	roach.y = groundHeight - roach.height
+	roach.xSpeed = 0
+	roach.ySpeed = 0
+	roach.runSpeed = 5000
+	roach.jumpSpeed = -800
+	roach.friction = 10
+	roach.canJump = false
 	roach.state = "alive"
 	roach.soundIsPlaying = false;
+	roach.health = 100
+end
+
+function roach.jump()
+	if roach.canJump then
+		roach.ySpeed = roach.jumpSpeed
+		roach.canJump = false
+	end
+end
+
+function roach.moveRight(dt)
+	roach.xSpeed = roach.xSpeed + (roach.runSpeed * dt)
+	roach.xSpeed = math.min(roach.xSpeed, roach.runSpeed)
+	roach.state = "moveRight"
+end
+
+function roach.moveLeft(dt)
+	roach.xSpeed = roach.xSpeed - (roach.runSpeed * dt)
+	roach.xSpeed = math.max(roach.xSpeed, -roach.runSpeed)
+	roach.state = "moveLeft"
+end
+
+function roach.stop()
+	roach.xSpeed = 0
+end
+
+function roach.hitFloor(maxY)
+	roach.y = maxY - roach.height
+	roach.ySpeed = 0
+	roach.canJump = true
 end
 
 function roach.update(dt)
+
+	if (gas.checkRoach()) then
+		roach.health = roach.health - dt*100/2
+	end
+
+	--Posició
+	roach.x = roach.x + (roach.xSpeed * dt)
+	roach.y = roach.y + (roach.ySpeed * dt)
+
+	--Gravetat
+	roach.ySpeed = roach.ySpeed + (gravity * dt)
+	roach.xSpeed = roach.xSpeed * (1 - math.min(dt * roach.friction, 1))
+
+	--Update estat
+	if not (roach.canJump) then
+		if roach.ySpeed < 0 then
+			roach.state = "jump"
+		elseif roach.ySpeed > 0 then
+				roach.state = "fall"
+		end
+	else
+		if roach.xSpeed > 2 then
+			roach.state = "moveRight"
+		elseif roach.xSpeed < -2 then
+			roach.state = "moveLeft"
+		else
+			roach.xSpeed = 0
+			roach.state = "stand"
+		end
+	end
+
+	if roach.x > scEnd - roach.width then roach.x = scEnd - roach.width end
+    if roach.x < scStart then roach.x = scStart end
+    if roach.y > groundHeight - roach.height then
+        roach.hitFloor(460)
+    end
+
+    if (roach.state == "moveRight" or roach.state == "moveLeft") then
+    	TEsound.resume("roachsound")
+		roach.soundIsPlaying = true
+	else 
+		TEsound.pause("roachsound")
+		roach.soundIsPlaying = false
+	end
+
+
+
+	if keys["d"] then
+        roach.moveRight(dt)
+    end
+    if keys["a"] then
+        roach.moveLeft(dt)
+    end
+    if keys["w"] then
+        roach.jump()
+    end 
+end
+
+--[[function roach.update(dt)
 	if (not (keys["a"] and keys["w"])) then
 		if (keys["a"]) then 
 			roach.x = roach.x - 12
@@ -49,4 +145,4 @@ function roach.update(dt)
 		TEsound.pause("roachsound")
 		roach.soundIsPlaying = false
 	end
-end
+end]]

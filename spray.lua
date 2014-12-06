@@ -24,7 +24,8 @@ function spray.update(dt)
 	
 	spray.timeForNextGas = spray.timeForNextGas - dt
 	if (spray.timeForNextGas <= 0) then
-		spray.timeForNextGas = love.math.random(0, 10000)/1000 + spray.minTime
+		gas.throw(spray.x+spray.width, 4)
+		spray.timeForNextGas = love.math.random(0, 2*1000)/1000 + spray.minTime
 	end
 
 
