@@ -51,6 +51,9 @@ function love.load()
 end
 
 function love.update(dt)
+	if (keys[" "]) then
+			love.load()
+		end
 	globalTime = globalTime + dt
 	spray.update(dt)
 	gas.update(dt)
@@ -58,9 +61,7 @@ function love.update(dt)
 	if (roach.state ~= "dead") then
 		roach.update(dt)
 	else 
-		if (keys[" "]) then
-			love.load()
-		end
+		
 	end
 
 	hand.update(dt)
@@ -74,7 +75,7 @@ function love.draw()
 	love.graphics.draw(roach.img, roach.sprites[1], roach.x, roach.y)
 	love.graphics.draw(hand.img, hand.x, hand.y)
 	gas.draw()
-	--love.graphics.draw(spray.img, spray.x, spray.y)
+	love.graphics.draw(spray.img, spray.x, spray.y)
 
 	drawHealthBar()
 						--love.graphics.setCanvas()
