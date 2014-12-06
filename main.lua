@@ -9,7 +9,8 @@ scHeight = 600
 
 function loadAssets()
 	imgBackground = love.graphics.newImage("assets/background.png");
-	
+	leftlimit = 15
+	rightlimit = 1200-15-roach.width
 	roach.loadAssets()
 	hand.loadAssets()
 end
