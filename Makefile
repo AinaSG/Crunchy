@@ -1,0 +1,10 @@
+ASSET_FILES = $(shell find ./assets/ -type f -name '*')
+
+all: love
+
+love: *.lua $(ASSET_FILES)
+	rm -f  *.love
+	zip kr *.lua assets/*
+	mv kr.zip kr.love
+launch:
+	love kr.love &
