@@ -1,7 +1,7 @@
 spray = {}
 
 function spray.loadAssets()
-	spray.img = love.graphics.newImage("assets/hand.png")
+	spray.img = love.graphics.newImage("assets/hand2.png")
 	spray.width = spray.img:getWidth()
 	spray.height = spray.img:getHeight()
 end
@@ -11,6 +11,8 @@ function spray.init()
 	spray.currentSpeed = 10
 	
 	spray.timeForNextGas = 5
+	spray.gasLength = love.math.random(3,5)
+	spray.currentLenght = 0
 	spray.minTime = 3
 
 	spray.normalHeight = scHeight - spray.height
@@ -23,9 +25,18 @@ function spray.update(dt)
 	local sprayPos = spray.x + spray.width/2
 	
 	spray.timeForNextGas = spray.timeForNextGas - dt
-	if (spray.timeForNextGas <= 0) then
-		gas.throw(spray.x+spray.width, 4)
-		spray.timeForNextGas = love.math.random(0, 2*1000)/1000 + spray.minTime
+	if (spray.timeForNextGas <= 0 
+		or (roach.x + roach.height < groundHeight - gas.height
+		and math.abs((spray.x + spray.width/2) - (roach.x + roach.width)) < roach.width/4)) then
+		if (spray.currentLenght < spray.gasLength) then
+			gas.throw(spray.x + spray.width/2, 4)
+			spray.currentLenght = spray.currentLenght + 1
+		else
+			spray.gasLength = love.math.random(3,5) 
+			spray.timeForNextGas = love.math.random(0, 2*1000)/1000 + spray.minTime
+		end
+	else 
+		spray.currentLenght = 0
 	end
 
 

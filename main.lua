@@ -33,8 +33,8 @@ function initKeys()
 end
 
 function love.load()
-							--canvas = love.graphics.newCanvas()
-							--local str = love.filesystem.read('blcknwht.frag')
+							--canvas = love.graphics.newCanvas(64,64)
+							--local str = love.filesystem.read('Shaders Locos/CTR.frag')
 							--shader = love.graphics.newShader(str)
 							--shader:send('inputSize', {love.graphics.getWidth(), love.graphics.getHeight()})
 							--shader:send('textureSize', {love.graphics.getWidth(), love.graphics.getHeight()})
