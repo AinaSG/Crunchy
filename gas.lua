@@ -65,7 +65,6 @@ function gas.checkRoach()
 				if(pt.y > bottom) then pt.y = bottom; end
 				if(pt.y < top) then pt.y = top; end
 
-				print(distance(pt, center))
 				if(distance(pt, center) < gas.width/2) then 
 					return true;
 				end

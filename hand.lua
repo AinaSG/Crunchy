@@ -7,9 +7,9 @@ function hand.loadAssets()
 end
 
 function hand.init()
-	hand.speed = 0
-	hand.runSpeed = 100
-	hand.fallSpeed = 10
+	hand.speed = 500
+	hand.currentSpeed = 500
+	hand.fallSpeed = 700
 
 	hand.fingerOffset = 230
 	hand.fingerSize = 60
@@ -19,16 +19,6 @@ function hand.init()
 
 	hand.x = 600
 	hand.y = hand.normalHeight
-end
-
-function hand.moveRight(dt)
-	hand.speed = hand.speed + (hand.runSpeed * dt)
-	hand.speed = math.min(hand.speed, hand.runSpeed)
-end
-
-function hand.moveLeft(dt)
-	hand.speed = hand.speed - (hand.runSpeed * dt)
-	hand.speed = math.max(hand.speed, -hand.runSpeed)
 end
 
 function hand.update(dt)
@@ -41,14 +31,14 @@ function hand.update(dt)
 			hand.state = "kill"
 		else 
 			if (fingerPos > roachPos) then
-				hand.moveLeft(dt)
+				hand.speed = -hand.currentSpeed
 			else 
-				hand.moveRight(dt)
+				hand.speed = hand.currentSpeed
 			end
+			hand.x = hand.x + (hand.speed * dt)
 		end
-		hand.x = hand.x + (hand.speed * dt)
 	elseif hand.state == "kill" then
-		hand.y = hand.y + hand.fallSpeed
+		hand.y = hand.y + (hand.fallSpeed * dt)
 		if (hand.y + hand.height > roach.y and math.abs(roachPos - fingerPos) < hand.fingerSize/2) then
 				roach.health = 0
 				roach.state = "death"
@@ -58,7 +48,7 @@ function hand.update(dt)
 			hand.state = "recover"
 		end
 	elseif hand.state == "recover" then
-		hand.y = hand.y - hand.fallSpeed
+		hand.y = hand.y - (hand.fallSpeed * dt)
 		if (hand.y < hand.normalHeight) then
 			hand.y = hand.normalHeight
 			hand.state = "follow"
