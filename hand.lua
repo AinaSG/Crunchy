@@ -22,7 +22,7 @@ function hand.init()
 end
 
 function hand.update(dt)
-	local fingerPos = hand.x + hand.fingerOffset
+	local fingerPos = hand.x + hand.fingerOffset - hand.fingerSize/2
 	local roachPos = roach.x +  roach.width/2
 	
 	if hand.state == "follow" then

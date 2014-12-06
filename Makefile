@@ -6,5 +6,6 @@ love: *.lua $(ASSET_FILES)
 	rm -f  *.love
 	zip kr *.lua assets/*
 	mv kr.zip kr.love
+	make launch
 launch:
 	love kr.love &
