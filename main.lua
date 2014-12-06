@@ -33,6 +33,12 @@ function initKeys()
 end
 
 function love.load()
+							--canvas = love.graphics.newCanvas()
+							--local str = love.filesystem.read('blcknwht.frag')
+							--shader = love.graphics.newShader(str)
+							--shader:send('inputSize', {love.graphics.getWidth(), love.graphics.getHeight()})
+							--shader:send('textureSize', {love.graphics.getWidth(), love.graphics.getHeight()})
+
 	globalTime = 0
 	love.math.setRandomSeed(os.time())
 	loadAssets()
@@ -64,6 +70,7 @@ function love.update(dt)
 end
 
 function love.draw()
+						--love.graphics.setCanvas(canvas)
 	love.graphics.draw(imgBackground,0,0)
 	love.graphics.draw(roach.img, roach.sprites[1], roach.x, roach.y)
 	love.graphics.draw(hand.img, hand.x, hand.y)
@@ -71,6 +78,10 @@ function love.draw()
 	love.graphics.draw(spray.img, spray.x, spray.y)
 
 	drawHealthBar()
+						--love.graphics.setCanvas()
+						--love.graphics.setShader(shader)
+						--love.graphics.draw(canvas)
+						--love.graphics.setShader()
 end
 
 function drawHealthBar()
