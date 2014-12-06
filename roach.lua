@@ -23,13 +23,13 @@ end
 function roach.update(dt)
 	if (not (keys["a"] and keys["w"])) then
 		if (keys["a"]) then 
-			roach.x = roach.x - 5
+			roach.x = roach.x - 12
 			if (not roach.soundIsPlaying) then
 				TEsound.resume("roachsound")
 				roach.soundIsPlaying = true
 			end
 		elseif (keys["d"]) then
-			roach.x = roach.x + 5
+			roach.x = roach.x + 12
 			if (not roach.soundIsPlaying) then
 				TEsound.resume("roachsound")
 				roach.soundIsPlaying = true
@@ -38,5 +38,15 @@ function roach.update(dt)
 			TEsound.pause("roachsound")
 			roach.soundIsPlaying = false
 		end
+	end
+	if (roach.x < leftlimit) then 
+		roach.x = leftlimit
+		TEsound.pause("roachsound")
+		roach.soundIsPlaying = false
+	end
+	if (roach.x > rightlimit) then 
+		roach.x = rightlimit
+		TEsound.pause("roachsound")
+		roach.soundIsPlaying = false
 	end
 end

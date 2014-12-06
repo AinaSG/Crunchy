@@ -7,8 +7,8 @@ function hand.loadAssets()
 end
 
 function hand.init()
-	hand.speed = 2
-	hand.currentSpeed = 2
+	hand.speed = 10
+	hand.currentSpeed = 10
 	hand.fallSpeed = 10
 
 	hand.fingerOffset = 150
