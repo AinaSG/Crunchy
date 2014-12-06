@@ -9,7 +9,6 @@ function roach.loadAssets()
 	roach.sprites[1] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[2] = love.graphics.newQuad(0, roach.height, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[3] = love.graphics.newQuad(roach.width, roach.height, roach.width, roach.height, roach.img:getDimensions())
-	roach.sound = {}
 	TEsound.playLooping("assets/roach-move.mp3", "roachsound")
 	TEsound.pause("roachsound")
 end
