@@ -75,8 +75,8 @@ function hand.update(dt)
 	system2:update(dt)
 	local fingerPos = hand.x + hand.fingerOffset
 	local roachPos = roach.x +  roach.width/2
-	hand.currentSpeed = hand.currentSpeed + dt
-	hand.fallSpeed = hand.fallSpeed + dt
+	hand.currentSpeed = hand.currentSpeed + dt*2
+	hand.fallSpeed = hand.fallSpeed + dt*2
 
 
 	if hand.state == "follow" then

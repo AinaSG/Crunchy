@@ -5,8 +5,8 @@ roach.height = 108
 groundHeight = 460
 
 function roach.loadAssets()
-	--roach.img = love.graphics.newImage("assets/snowmant.png") 
-	roach.img = love.graphics.newImage("assets/blushed3.png")
+	roach.img = love.graphics.newImage("assets/snowmant.png") 
+	--roach.img = love.graphics.newImage("assets/blushed3.png")
 	roach.sprites = {}
 	roach.sprites[1] = love.graphics.newQuad(0, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[2] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())

@@ -4,6 +4,7 @@ require "spray"
 require "gas"
 
 require("TEsound") --Llibreria per a controlar so
+TEsound.playLooping("assets/fight.ogg", "music")
 
 
 
@@ -14,6 +15,8 @@ scMargin = 20
 scStart = scMargin
 scEnd = scWidth - scMargin
 gravity = 2800
+score = 0
+										hastoped = false
 
 function loadAssets()
 	imgBackground = love.graphics.newImage("assets/background.png");
@@ -54,7 +57,9 @@ function love.load()
 end
 
 function love.update(dt)
+								if not hastoped then
 	globalTime = globalTime + dt
+	score = math.floor(globalTime * 12) 
 	spray.update(dt)
 	gas.update(dt)
 
@@ -69,6 +74,7 @@ function love.update(dt)
 
 	hand.update(dt)
 	TEsound.cleanup()
+								end
 end
 
 function love.draw()
@@ -78,7 +84,7 @@ function love.draw()
 	hand.draw()
 	gas.draw()
 	love.graphics.draw(spray.img, spray.x, spray.y)
-
+	drawScore()
 	drawHealthBar()
 						--love.graphics.setCanvas()
 						--love.graphics.setShader(shader)
@@ -99,7 +105,11 @@ function drawHealthBar()
 	love.graphics.setColor(255,255,255)
 end
 
+function drawScore()
+	 love.graphics.printf("" .. score,0,136,800,"center")
+end
 function love.keypressed(key)
+											if key == "p" then hastoped = not hastoped end
 	if type(keys[key]) ~= nil then
 		keys[key] = true
 	end

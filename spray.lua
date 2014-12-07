@@ -7,8 +7,8 @@ function spray.loadAssets()
 end
 
 function spray.init()
-	spray.speed = 10
-	spray.currentSpeed = 10
+	spray.speed = 500
+	spray.currentSpeed = 500
 	
 	spray.timeForNextGas = 5
 	spray.gasLength = love.math.random(3,5)
@@ -47,5 +47,5 @@ function spray.update(dt)
 	elseif (sprayPos  < scMargin) then
 		spray.speed = spray.currentSpeed
 	end
-	spray.x = spray.x + spray.speed
+	spray.x = spray.x + (spray.speed * dt)
 end
