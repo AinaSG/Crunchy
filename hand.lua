@@ -1,7 +1,7 @@
 hand = {}
 
 function hand.loadAssets()
-	hand.img = love.graphics.newImage("assets/hand.png")
+	hand.img = love.graphics.newImage("assets/vhand.png")
 	hand.width = hand.img:getWidth()
 	hand.height = hand.img:getHeight()
 end

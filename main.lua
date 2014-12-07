@@ -30,6 +30,7 @@ function initKeys()
 	keys["a"] = false
 	keys["w"] = false
 	keys[" "] = false
+	keys["t"] = false
 end
 
 function love.load()
@@ -41,8 +42,9 @@ function love.load()
 
 	globalTime = 0
 	love.math.setRandomSeed(os.time())
-	loadAssets()
 	initKeys()
+	loadAssets()
+	
 
 	roach.init()
 	hand.init()
