@@ -1,7 +1,7 @@
 roach = {}
 roach.width = 84
 roach.offset = 41
-roach.height = 108 -- roach.offset
+roach.height = 108
 groundHeight = 460
 
 function roach.loadAssets()
@@ -142,34 +142,3 @@ function roach.update(dt)
         roach.jump()
     end 
 end
-
---[[function roach.update(dt)
-	if (not (keys["a"] and keys["w"])) then
-		if (keys["a"]) then 
-			roach.x = roach.x - 12
-			if (not roach.soundIsPlaying) then
-				TEsound.resume("roachsound")
-				roach.soundIsPlaying = true
-			end
-		elseif (keys["d"]) then
-			roach.x = roach.x + 12
-			if (not roach.soundIsPlaying) then
-				TEsound.resume("roachsound")
-				roach.soundIsPlaying = true
-			end
-		else
-			TEsound.pause("roachsound")
-			roach.soundIsPlaying = false
-		end
-	end
-	if (roach.x < leftlimit) then 
-		roach.x = leftlimit
-		TEsound.pause("roachsound")
-		roach.soundIsPlaying = false
-	end
-	if (roach.x > rightlimit) then 
-		roach.x = rightlimit
-		TEsound.pause("roachsound")
-		roach.soundIsPlaying = false
-	end
-end]]
