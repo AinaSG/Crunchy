@@ -1,6 +1,7 @@
 roach = {}
 roach.width = 84
-roach.height = 108
+roach.offset = 41
+roach.height = 108 -- roach.offset
 groundHeight = 460
 
 function roach.loadAssets()
