@@ -7,9 +7,9 @@ function hand.loadAssets()
 end
 
 function hand.init()
-	hand.speed = 500
-	hand.currentSpeed = 500
-	hand.fallSpeed = 700
+	hand.speed = 0
+	hand.currentSpeed = 400
+	hand.fallSpeed = 500
 
 	hand.fingerOffset = 230
 	hand.fingerSize = 60
@@ -70,17 +70,6 @@ function hand.initblood()
 	system2:stop()
 end
 
-
-function hand.moveRight(dt)
-	hand.speed = hand.speed + (hand.runSpeed * dt)
-	hand.speed = math.min(hand.speed, hand.runSpeed)
-end
-
-function hand.moveLeft(dt)
-	hand.speed = hand.speed - (hand.runSpeed * dt)
-	hand.speed = math.max(hand.speed, -hand.runSpeed)
-end
-
 function hand.update(dt)
 	system:update(dt)
 	system2:update(dt)
@@ -101,16 +90,18 @@ function hand.update(dt)
 		end
 	elseif hand.state == "kill" then
 		hand.y = hand.y + (hand.fallSpeed * dt)
-		if (hand.y + hand.height > roach.y and math.abs(roachPos - fingerPos) < hand.fingerSize/2) then
+		if (hand.y + hand.height > roach.y + roach.offset and math.abs(roachPos - fingerPos) < (roach.width + hand.fingerSize)/2.1) then
 				roach.health = 0
-				if (not (roach.state =="death")) then
+				if (roach.state ~= "dead") then
 					print("let the blood beggin")
 					system:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
 					system:start()
 					system2:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
 					system2:start()
+				elseif roach.y < groundHeight - roach.height then
+					roach.y = math.min(groundHeight - roach.height, (hand.y + hand.height) - roach.offset)
 				end
-				roach.state = "death"
+				roach.state = "dead"
 			end
 		if (hand.y > groundHeight - hand.height) then
 			hand.y = groundHeight - hand.height

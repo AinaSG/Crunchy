@@ -22,7 +22,7 @@ function gas.throw(pos, duration)
 	newThrow.pos = pos
 	newThrow.duration = duration
 	newThrow.rot = love.math.random(0,359) * (math.pi/180)
-	newThrow.alpha = 255
+	newThrow.alpha = love.math.random(70,140)
 	table.insert(gas.blobs, newThrow)
 end
 
@@ -67,7 +67,7 @@ end
 function gas.checkRoach() 
 	if (roach.y + roach.height > groundHeight - gas.height) then
 		for i=#gas.blobs,1,-1 do
-			if (gas.blobs[i].alpha > 128) then
+			if (gas.blobs[i].alpha > 50) then
 				local pt = {}
 				pt.x = gas.blobs[i].pos
 				pt.y = groundHeight - gas.height/2

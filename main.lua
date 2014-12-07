@@ -6,6 +6,7 @@ require "gas"
 require("TEsound") --Llibreria per a controlar so
 
 
+
 groundHeight = 460
 scWidth = 1200
 scHeight = 600
@@ -51,21 +52,20 @@ function love.load()
 end
 
 function love.update(dt)
-	if (keys[" "]) then
-			love.load()
-		end
 	globalTime = globalTime + dt
 	spray.update(dt)
 	gas.update(dt)
 
-	if (roach.state ~= "dead") then
+	if (roach.health > 0) then
 		roach.update(dt)
 	else 
-		
+		roach.state = "dead"
+		if (keys[" "]) then
+		love.load()
+	end
 	end
 
 	hand.update(dt)
-	
 	TEsound.cleanup()
 end
 
@@ -85,11 +85,14 @@ function love.draw()
 end
 
 function drawHealthBar()
+	love.graphics.setColor(255,0,0)
+	love.graphics.rectangle("fill", 5, 5,200, 20)
+	love.graphics.setColor(255,255,255)
 	if (roach.health > 25 or globalTime%0.5 > 0.25) then
-		love.graphics.setColor(255,0,0)
+		love.graphics.setColor(0,255,0)
 		love.graphics.rectangle("fill", 5, 5, math.max(1,roach.health/100 * 200), 20)
-		love.graphics.setColor(255,255,255)
 	end
+	love.graphics.setColor(255,255,255)
 end
 
 function love.keypressed(key)
