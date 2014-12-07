@@ -4,6 +4,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"gas",
 				"gasLength"
 			],
@@ -70,6 +71,70 @@
 			[
 				"in",
 				"include"
+=======
+				"dr",
+				"drawHealthBar"
+			],
+			[
+				"d",
+				"love.graphics.rectangle(mode, x, y, width, height)"
+			],
+			[
+				"set",
+				"love.graphics.setColor(rgba)"
+			],
+			[
+				"roac",
+				"roach"
+			],
+			[
+				"gr",
+				"groundHeight"
+			],
+			[
+				"ju",
+				"jumpSpeed"
+			],
+			[
+				"roach",
+				"roach-move"
+			],
+			[
+				"fnge",
+				"fingerSize"
+			],
+			[
+				"fin",
+				"fingerPos"
+			],
+			[
+				"t",
+				"timeForNextCange"
+			],
+			[
+				"l",
+				"lastChangeTime"
+			],
+			[
+				"load",
+				"loadAssets"
+			],
+			[
+				"fun",
+				"fun	function"
+			],
+			[
+				"key",
+				"love.keypressed(key, isrepeat)"
+			],
+			[
+				"img",
+				"imgRoachLeft"
+			],
+			[
+				"ma",
+				"main	main()"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 			]
 		]
 	},
@@ -79,8 +144,14 @@
 			"file": "main.lua",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 2181,
 				"line_ending": "Unix"
+=======
+				"buffer_size": 2167,
+				"line_ending": "Unix",
+				"name": "function love.load()"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 			}
 		},
 		{
@@ -88,6 +159,17 @@
 			"settings":
 			{
 				"buffer_size": 3575,
+<<<<<<< HEAD
+=======
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+			"settings":
+			{
+				"buffer_size": 2712,
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 				"line_ending": "Unix"
 			}
 		},
@@ -100,10 +182,25 @@
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "spray.lua",
 			"settings":
 			{
 				"buffer_size": 1324,
+=======
+			"file": "hand.lua",
+			"settings":
+			{
+				"buffer_size": 1305,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "spray.lua",
+			"settings":
+			{
+				"buffer_size": 919,
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 				"line_ending": "Unix"
 			}
 		},
@@ -111,15 +208,21 @@
 			"file": "gas.lua",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 1816,
 				"line_ending": "Unix",
 				"name": "gas = {}"
+=======
+				"buffer_size": 1678,
+				"line_ending": "Unix"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 			}
 		}
 	],
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"command_palette":
 	{
+<<<<<<< HEAD
 		"height": 392.0,
 		"selected_items":
 		[
@@ -130,20 +233,29 @@
 			[
 				"ind",
 				"Indentation: Reindent Lines"
+=======
+		"height": 75.0,
+		"selected_items":
+		[
+			[
+				"comm",
+				"Toggle Block Comment"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 			],
 			[
 				"i",
 				"Indentation: Reindent Lines"
 			]
 		],
+<<<<<<< HEAD
 		"width": 404.0
+=======
+		"width": 392.0
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -154,6 +266,7 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+<<<<<<< HEAD
 	"expanded_folders":
 	[
 		"/home/jfons/Projects/kawaii-roach"
@@ -174,6 +287,25 @@
 		"/home/jfons/Projects/Cheezy/Vector2.h",
 		"/home/jfons/Projects/Cheezy/Vector2.cpp",
 		"/home/jfons/Projects/Cheezy/Makefile"
+=======
+	"file_history":
+	[
+		"/home/aina/Loplop/src/main.lua",
+		"/home/aina/kawaii-roach/gas.lua",
+		"/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+		"/home/aina/PicaTecles/Cake/Cakejumper/main.lua",
+		"/home/aina/kawaii-roach/TEsound.lua",
+		"/home/aina/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/aina/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/aina/Loplop/src/conf.lua",
+		"/home/aina/Loplop/final/main.lua",
+		"/home/aina/Joc EDA/game/Board.hh",
+		"/home/aina/Joc EDA/game/AIGerty.cc",
+		"/home/aina/Joc EDA/game/AINA_RETURNS.cc",
+		"/home/aina/Baixades/AIJFonS.cc",
+		"/home/aina/LoveProject/player.lua",
+		"/home/aina/Imatges/Wallpaper/wallpaper-815340.jpg"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 	],
 	"find":
 	{
@@ -184,7 +316,11 @@
 		"height": 93.0,
 		"where_history":
 		[
+<<<<<<< HEAD
 			""
+=======
+			"/home/aina/kawaii-roach"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 		]
 	},
 	"find_state":
@@ -192,6 +328,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"tab",
 			"prin",
 			"roach",
@@ -211,6 +348,29 @@
 			"&v",
 			"u.",
 			"vec"
+=======
+			"print",
+			"rectangle.",
+			"rectangle.r",
+			"title",
+			"maxY",
+			"hitFloor",
+			"groundHeight",
+			"hitFloor",
+			"maxY",
+			"hitFloor",
+			"self",
+			"Player:",
+			"roachsound",
+			"fingerOffset",
+			"sra",
+			"seed",
+			"roach",
+			"end",
+			"screen",
+			"jugador.cake/4",
+			"$"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -218,10 +378,17 @@
 		"regex": false,
 		"replace_history":
 		[
+<<<<<<< HEAD
 			"hand",
 			"spray",
 			"npos",
 			""
+=======
+			"",
+			"roach",
+			"roach.",
+			"hand"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 		],
 		"reverse": false,
 		"show_context": true,
@@ -238,22 +405,31 @@
 				{
 					"buffer": 0,
 					"file": "main.lua",
-					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 2181,
+=======
+						"buffer_size": 2167,
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								602,
 								602
+=======
+								1713,
+								1713
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -262,12 +438,24 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
+=======
+							"auto_name": "function love.load()",
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1020.0,
+						"zoom_level": 1.0
+					},
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "roach.lua",
+<<<<<<< HEAD
 					"semi_transient": false,
+=======
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 					"settings":
 					{
 						"buffer_size": 3575,
@@ -277,12 +465,18 @@
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								1748,
 								1748
+=======
+								2166,
+								2166
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -291,12 +485,50 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
+=======
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+<<<<<<< HEAD
 					"file": "hand.lua",
 					"semi_transient": false,
+=======
+					"file": "/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+					"settings":
+					{
+						"buffer_size": 2712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2584,
+								2584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "conf.lua",
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 					"settings":
 					{
 						"buffer_size": 1360,
@@ -306,8 +538,13 @@
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								85,
 								85
+=======
+								323,
+								323
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 							]
 						],
 						"settings":
@@ -319,6 +556,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 1,
 					"type": "text"
 				},
@@ -329,18 +567,61 @@
 					"settings":
 					{
 						"buffer_size": 1324,
+=======
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "hand.lua",
+					"settings":
+					{
+						"buffer_size": 1305,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								784,
-								784
+								82,
+								82
 							]
 						],
 						"settings":
 						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "spray.lua",
+					"settings":
+					{
+						"buffer_size": 919,
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								784,
+								784
+=======
+								662,
+								662
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
+							]
+						],
+						"settings":
+						{
+<<<<<<< HEAD
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -358,18 +639,41 @@
 					"settings":
 					{
 						"buffer_size": 1816,
+=======
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "gas.lua",
+					"settings":
+					{
+						"buffer_size": 1678,
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								727,
 								727
+=======
+								1106,
+								1106
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"auto_name": "gas = {}",
 							"syntax": "Packages/Lua/Lua.tmLanguage"
 						},
@@ -378,6 +682,15 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+=======
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 					"type": "text"
 				}
 			]
@@ -416,16 +729,23 @@
 	"menu_visible": true,
 	"output.exec":
 	{
+<<<<<<< HEAD
 		"height": 157.0
+=======
+		"height": 27.0
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"project": "kr.sublime-project",
 	"replace":
 	{
+<<<<<<< HEAD
 		"height": 64.0
+=======
+		"height": 114.0
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -434,6 +754,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"h",
 				"hand.lua"
 			],
@@ -472,6 +793,18 @@
 			[
 				"mai",
 				"main.cpp"
+=======
+				"ga",
+				"gas.lua"
+			],
+			[
+				"spra",
+				"spray.lua"
+			],
+			[
+				"te",
+				"TEsound.lua"
+>>>>>>> d3e8fa6c26bde74489ff22d2f5f940dd69ba8cc6
 			]
 		],
 		"width": 0.0
@@ -484,25 +817,10 @@
 		],
 		"width": 0.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
 	"side_bar_width": 150.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

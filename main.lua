@@ -72,8 +72,8 @@ end
 function love.draw()
 						--love.graphics.setCanvas(canvas)
 	love.graphics.draw(imgBackground,0,0)
-	love.graphics.draw(roach.img, roach.sprites[1], roach.x, roach.y)
-	love.graphics.draw(hand.img, hand.x, hand.y)
+	roach.draw()
+	hand.draw()
 	gas.draw()
 	love.graphics.draw(spray.img, spray.x, spray.y)
 
