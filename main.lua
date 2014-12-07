@@ -2,6 +2,7 @@ require "roach"
 require "hand"
 require "spray"
 require "gas"
+require "sick"
 
 require("TEsound") --Llibreria per a controlar so
 TEsound.playLooping("assets/fight.ogg", "music")
@@ -16,7 +17,7 @@ scStart = scMargin
 scEnd = scWidth - scMargin
 gravity = 2800
 score = 0
-										hastoped = false
+
 
 function loadAssets()
 	imgBackground = love.graphics.newImage("assets/background.png");
@@ -44,6 +45,10 @@ function love.load()
 							--shader:send('inputSize', {love.graphics.getWidth(), love.graphics.getHeight()})
 							--shader:send('textureSize', {love.graphics.getWidth(), love.graphics.getHeight()})
 
+	highscore.set("scores", 3, "", 0)
+
+	isPaused = false
+	finishedGame = false
 	globalTime = 0
 	love.math.setRandomSeed(os.time())
 	initKeys()
@@ -57,24 +62,31 @@ function love.load()
 end
 
 function love.update(dt)
-								if not hastoped then
-	globalTime = globalTime + dt
-	score = math.floor(globalTime * 12) 
-	spray.update(dt)
-	gas.update(dt)
+	if not isPaused then
+		globalTime = globalTime + dt
+		spray.update(dt)
+		gas.update(dt)
 
-	if (roach.health > 0) then
-		roach.update(dt)
-	else 
-		roach.state = "dead"
-		if (keys[" "]) then
-		love.load()
-	end
-	end
+		if (roach.health > 0) then
+			score = score + dt* 12
+			roach.update(dt)
+		else 
+			roach.state = "dead"
+			if not finishedGame then
+				local sc = math.floor(score)
+				highscore.add("", sc)
+			end
+			if roach.y + roach.height < groundHeight then
+				roach.y = math.min(groundHeight - roach.height, roach.y + (hand.fallSpeed * dt))
+			end
+			if (keys[" "]) then
+			love.load()
+		end
+		end
 
-	hand.update(dt)
-	TEsound.cleanup()
-								end
+		hand.update(dt)
+		TEsound.cleanup()
+	end
 end
 
 function love.draw()
@@ -106,10 +118,13 @@ function drawHealthBar()
 end
 
 function drawScore()
-	 love.graphics.printf("" .. score,0,136,800,"center")
+	 local sc = math.floor(score)
+	 love.graphics.setColor(0,0,0)
+	 love.graphics.printf(sc,1100,15,32,"center")
+	 love.graphics.setColor(255,255,255)
 end
 function love.keypressed(key)
-											if key == "p" then hastoped = not hastoped end
+	if key == "p" then isPaused = not isPaused end
 	if type(keys[key]) ~= nil then
 		keys[key] = true
 	end

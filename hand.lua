@@ -8,7 +8,7 @@ end
 
 function hand.init()
 	hand.speed = 0
-	hand.currentSpeed = 250
+	hand.currentSpeed = 350
 	hand.fallSpeed = 350
 
 	hand.fingerOffset = 230
@@ -102,8 +102,8 @@ function hand.update(dt)
 					system:start()
 					system2:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
 					system2:start()
-				elseif roach.y < groundHeight - roach.height then
-					roach.y = math.min(groundHeight - roach.height, (hand.y + hand.height) - roach.offset)
+				--elseif roach.y < groundHeight - roach.height then
+					--roach.y = math.min(groundHeight - roach.height, (hand.y + hand.height) - roach.offset)
 				end
 				roach.state = "dead"
 			end
