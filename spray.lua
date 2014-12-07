@@ -1,7 +1,7 @@
 spray = {}
 
 function spray.loadAssets()
-	spray.img = love.graphics.newImage("assets/hand.png")
+	spray.img = love.graphics.newImage("assets/vsprai.png")
 	spray.width = spray.img:getWidth()
 	spray.height = spray.img:getHeight()
 end
@@ -13,7 +13,7 @@ function spray.init()
 	spray.timeForNextGas = 5
 	spray.minTime = 3
 
-	spray.normalHeight = scHeight - spray.height
+	spray.normalHeight = scHeight - spray.height + 650
 	spray.x = 0
 	spray.y = spray.normalHeight
 end

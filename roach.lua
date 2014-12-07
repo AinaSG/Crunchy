@@ -110,24 +110,24 @@ function roach.update(dt)
 		TEsound.pause("roachsound")
 		roach.soundIsPlaying = false
 	end
-						if (keys["a"] or keys["d"])then
-						      local temp_frame = (love.timer.getTime()*3000)%480
-						      if temp_frame > 320 then
-						        roach.actualsprite = 2
-						      elseif temp_frame > 240 then
-						        roach.actualsprite = 1
-						      elseif temp_frame > 120 then
-						        roach.actualsprite = 3
-						      else -- temp_frame <= 120
-						        roach.actualsprite = 1
-						      end
-						else
-						      if roach.state == "jump" then
-						        roach.actualsprite = 3
-						      else
-						        roach.actualsprite = 1
-						      end
-						end
+	if (keys["a"] or keys["d"])then
+		local temp_frame = (love.timer.getTime()*3000)%480
+			if temp_frame > 320 then
+				roach.actualsprite = 2
+			elseif temp_frame > 240 then
+				roach.actualsprite = 1
+			elseif temp_frame > 120 then
+					roach.actualsprite = 3
+			else -- temp_frame <= 120
+					roach.actualsprite = 1
+			end
+	else
+		if roach.state == "jump" then
+			roach.actualsprite = 3
+		else
+			roach.actualsprite = 1
+		end
+	end
 
 
 	if keys["d"] then
