@@ -59,6 +59,11 @@ function roach.hitFloor(maxY)
 	roach.canJump = true
 end
 
+function roach.pauseSound()
+	TEsound.pause("roachsound")
+	roach.soundIsPlaying = false
+end
+
 function roach.draw()
 	if (roach.state == "moveLeft" ) then 
 		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, 1, 1)
@@ -109,8 +114,7 @@ function roach.update(dt)
     	TEsound.resume("roachsound")
 		roach.soundIsPlaying = true
 	else 
-		TEsound.pause("roachsound")
-		roach.soundIsPlaying = false
+		roach.pauseSound()
 	end
 	if (keys["a"] or keys["d"])then
 		local temp_frame = (love.timer.getTime()*3000)%480

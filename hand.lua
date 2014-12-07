@@ -97,6 +97,7 @@ function hand.update(dt)
 				roach.health = 0
 				if (roach.state ~= "dead") then
 					print("let the blood beggin")
+					roach.pauseSound()
 					system:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
 					system:start()
 					system2:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
