@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"dr",
+				"drawHealthBar"
+			],
+			[
+				"d",
+				"love.graphics.rectangle(mode, x, y, width, height)"
+			],
+			[
+				"set",
+				"love.graphics.setColor(rgba)"
+			],
+			[
+				"roac",
+				"roach"
+			],
+			[
+				"gr",
+				"groundHeight"
+			],
+			[
+				"ju",
+				"jumpSpeed"
+			],
+			[
+				"roach",
+				"roach-move"
+			],
+			[
+				"fnge",
+				"fingerSize"
+			],
+			[
+				"fin",
+				"fingerPos"
+			],
+			[
+				"t",
+				"timeForNextCange"
+			],
+			[
+				"l",
+				"lastChangeTime"
+			],
+			[
+				"load",
+				"loadAssets"
+			],
+			[
+				"fun",
+				"fun	function"
+			],
+			[
+				"key",
+				"love.keypressed(key, isrepeat)"
+			],
+			[
+				"img",
+				"imgRoachLeft"
+			],
+			[
 				"ma",
 				"main	main()"
 			]
@@ -15,16 +75,24 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 132,
+				"buffer_size": 2167,
 				"line_ending": "Unix",
 				"name": "function love.load()"
 			}
 		},
 		{
-			"file": "/home/aina/Loplop/src/main.lua",
+			"file": "roach.lua",
 			"settings":
 			{
-				"buffer_size": 18921,
+				"buffer_size": 3575,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+			"settings":
+			{
+				"buffer_size": 2712,
 				"line_ending": "Unix"
 			}
 		},
@@ -35,23 +103,52 @@
 				"buffer_size": 1373,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "hand.lua",
+			"settings":
+			{
+				"buffer_size": 1305,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "spray.lua",
+			"settings":
+			{
+				"buffer_size": 919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gas.lua",
+			"settings":
+			{
+				"buffer_size": 1678,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 75.0,
 		"selected_items":
 		[
+			[
+				"comm",
+				"Toggle Block Comment"
+			],
+			[
+				"i",
+				"Indentation: Reindent Lines"
+			]
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -62,12 +159,15 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/home/aina/kawaii-roach"
-	],
 	"file_history":
 	[
+		"/home/aina/Loplop/src/main.lua",
+		"/home/aina/kawaii-roach/gas.lua",
+		"/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+		"/home/aina/PicaTecles/Cake/Cakejumper/main.lua",
+		"/home/aina/kawaii-roach/TEsound.lua",
+		"/home/aina/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/aina/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
 		"/home/aina/Loplop/src/conf.lua",
 		"/home/aina/Loplop/final/main.lua",
 		"/home/aina/Joc EDA/game/Board.hh",
@@ -83,9 +183,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/home/aina/kawaii-roach"
 		]
 	},
 	"find_state":
@@ -93,6 +194,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"print",
+			"rectangle.",
+			"rectangle.r",
+			"title",
+			"maxY",
+			"hitFloor",
+			"groundHeight",
+			"hitFloor",
+			"maxY",
+			"hitFloor",
+			"self",
+			"Player:",
+			"roachsound",
+			"fingerOffset",
+			"sra",
+			"seed",
+			"roach",
+			"end",
 			"screen",
 			"jugador.cake/4",
 			"$"
@@ -103,6 +222,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"roach",
+			"roach.",
+			"hand"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -119,66 +242,85 @@
 				{
 					"buffer": 0,
 					"file": "main.lua",
-					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 132,
+						"buffer_size": 2167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								72,
-								72
+								1713,
+								1713
 							]
 						],
 						"settings":
 						{
 							"auto_name": "function love.load()",
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1020.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/home/aina/Loplop/src/main.lua",
-					"semi_transient": false,
+					"file": "roach.lua",
 					"settings":
 					{
-						"buffer_size": 18921,
+						"buffer_size": 3575,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								184,
-								221
+								2166,
+								2166
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 816.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "/home/aina/PicaTecles/Cake/Cakejumper/Player.lua",
+					"settings":
+					{
+						"buffer_size": 2712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2584,
+								2584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "conf.lua",
-					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 1373,
@@ -188,8 +330,8 @@
 						"selection":
 						[
 							[
-								202,
-								202
+								323,
+								323
 							]
 						],
 						"settings":
@@ -202,7 +344,87 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "hand.lua",
+					"settings":
+					{
+						"buffer_size": 1305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								82,
+								82
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "spray.lua",
+					"settings":
+					{
+						"buffer_size": 919,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								662,
+								662
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "gas.lua",
+					"settings":
+					{
+						"buffer_size": 1678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1106,
+								1106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeLove/Love.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -239,14 +461,17 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 27.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"project": "kr.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 114.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -254,6 +479,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"ga",
+				"gas.lua"
+			],
+			[
+				"spra",
+				"spray.lua"
+			],
+			[
+				"te",
+				"TEsound.lua"
+			]
 		],
 		"width": 0.0
 	},
@@ -265,25 +502,10 @@
 		],
 		"width": 0.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
 	"side_bar_width": 150.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

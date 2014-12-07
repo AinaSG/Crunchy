@@ -1,15 +1,14 @@
 roach = {}
-roach.width = 64
-roach.height = 128
+roach.width = 84
+roach.height = 108
 groundHeight = 460
 
 function roach.loadAssets()
-	roach.img = love.graphics.newImage("assets/roach.png")
+	roach.img = love.graphics.newImage("assets/blushed3.png")
 	roach.sprites = {}
-	roach.sprites[0] = love.graphics.newQuad(0, 0, roach.width, roach.height, roach.img:getDimensions())
-	roach.sprites[1] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())
-	roach.sprites[2] = love.graphics.newQuad(0, roach.height, roach.width, roach.height, roach.img:getDimensions())
-	roach.sprites[3] = love.graphics.newQuad(roach.width, roach.height, roach.width, roach.height, roach.img:getDimensions())
+	roach.sprites[1] = love.graphics.newQuad(0, 0, roach.width, roach.height, roach.img:getDimensions())
+	roach.sprites[2] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())
+	roach.sprites[3] = love.graphics.newQuad(roach.width*2, 0, roach.width, roach.height, roach.img:getDimensions())
 	TEsound.playLooping("assets/roach-move.mp3", "roachsound")
 	TEsound.pause("roachsound")
 end
@@ -26,6 +25,7 @@ function roach.init()
 	roach.state = "alive"
 	roach.soundIsPlaying = false;
 	roach.health = 100
+	roach.actualsprite = 1
 end
 
 function roach.jump()
@@ -55,6 +55,14 @@ function roach.hitFloor(maxY)
 	roach.y = maxY - roach.height
 	roach.ySpeed = 0
 	roach.canJump = true
+end
+
+function roach.draw()
+	if (roach.state == "moveLeft" ) then 
+		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, 1, 1)
+	else
+		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, -1, 1, roach.width)
+	end
 end
 
 function roach.update(dt)
@@ -102,7 +110,24 @@ function roach.update(dt)
 		TEsound.pause("roachsound")
 		roach.soundIsPlaying = false
 	end
-
+						if (keys["a"] or keys["d"])then
+						      local temp_frame = (love.timer.getTime()*3000)%480
+						      if temp_frame > 320 then
+						        roach.actualsprite = 2
+						      elseif temp_frame > 240 then
+						        roach.actualsprite = 1
+						      elseif temp_frame > 120 then
+						        roach.actualsprite = 3
+						      else -- temp_frame <= 120
+						        roach.actualsprite = 1
+						      end
+						else
+						      if roach.state == "jump" then
+						        roach.actualsprite = 3
+						      else
+						        roach.actualsprite = 1
+						      end
+						end
 
 
 	if keys["d"] then
