@@ -84,6 +84,8 @@ function love.draw()
 						--love.graphics.setShader()
 end
 
+
+
 function drawHealthBar()
 	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("fill", 5, 5,200, 20)

@@ -8,8 +8,8 @@ end
 
 function hand.init()
 	hand.speed = 0
-	hand.currentSpeed = 400
-	hand.fallSpeed = 500
+	hand.currentSpeed = 250
+	hand.fallSpeed = 350
 
 	hand.fingerOffset = 230
 	hand.fingerSize = 60
@@ -75,7 +75,10 @@ function hand.update(dt)
 	system2:update(dt)
 	local fingerPos = hand.x + hand.fingerOffset
 	local roachPos = roach.x +  roach.width/2
-	
+	hand.currentSpeed = hand.currentSpeed + dt
+	hand.fallSpeed = hand.fallSpeed + dt
+
+
 	if hand.state == "follow" then
 		if (math.abs(roachPos - fingerPos) < hand.fingerSize/4) then
 			hand.speed = 0
