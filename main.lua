@@ -5,6 +5,8 @@ require "gas"
 require "sick"
 
 require("TEsound") --Llibreria per a controlar so
+
+highscore.set("scores", 5, "", 0)
 TEsound.playLooping("assets/fight.ogg", "music")
 TEsound.volume("music", 0.3)
 
@@ -23,7 +25,12 @@ gameState = "title"
 
 
 function loadAssets()
-	imgBackground = love.graphics.newImage("assets/background.png");
+	imgBackground = love.graphics.newImage("assets/background.png")
+	titleBg = love.graphics.newImage("assets/titlebg.png")
+	title = love.graphics.newImage("assets/title.png")
+	highscoresBg = love.graphics.newImage("assets/postit.png")
+	title_font = love.graphics.newFont("assets/ComingSoon.ttf",65)
+	text_font = love.graphics.newFont("assets/ComingSoon.ttf",48)
 	leftlimit = 15
 	rightlimit = 1200-15-roach.width
 	roach.loadAssets()
@@ -38,26 +45,18 @@ function initKeys()
 	keys["a"] = false
 	keys["w"] = false
 	keys[" "] = false
-	keys["t"] = false
+	keys["h"] = false
 end
 
 function love.load()
-
-							--canvas = love.graphics.newCanvas(64,64)
-							--local str = love.filesystem.read('Shaders Locos/CTR.frag')
-							--shader = love.graphics.newShader(str)
-							--shader:send('inputSize', {love.graphics.getWidth(), love.graphics.getHeight()})
-							--shader:send('textureSize', {love.graphics.getWidth(), love.graphics.getHeight()})
-
-	highscore.set("scores", 3, "", 0)
 	score = 0
 	isPaused = false
 	finishedGame = false
+	timeSinceGameFinished = 0
 	globalTime = 0
 	love.math.setRandomSeed(os.time())
 	initKeys()
 	loadAssets()
-	
 
 	roach.init()
 	hand.init()
@@ -66,13 +65,10 @@ function love.load()
 end
 
 function love.update(dt)
-	if gameState == "title" then
-		if keys[" "] then
-			gameState = "game"
-		end
-	elseif gameState == "game" then
+	globalTime = globalTime + dt
+
+	if gameState == "game" or gameState == "highscores" then
 		if not isPaused then
-			globalTime = globalTime + dt
 			spray.update(dt)
 			gas.update(dt)
 
@@ -80,68 +76,99 @@ function love.update(dt)
 				score = score + dt* 12
 				roach.update(dt)
 			else 
-				roach.state = "dead"
+				roach.die()
 				if not finishedGame then
 					finishedGame = true
+					highscore.add("", math.floor(score))
+					highscore.save()
+				end
+				timeSinceGameFinished = timeSinceGameFinished + dt
+				if timeSinceGameFinished > 1.5 then
 					local sc = math.floor(score)
 					local lastSc
 					for i, score, name in highscore() do
 						lastSc = score
 					end
-					if (sc > lastSc) then
+					if (sc >= lastSc) then
 						gameState = "highscores"
-						print("new highscore!!")
 					end
-					highscore.add("", sc)
-					highscore.save()
 				end
 				if roach.y + roach.height < groundHeight then
 					roach.y = math.min(groundHeight - roach.height, roach.y + (hand.fallSpeed * dt))
 				end
-				if (keys[" "]) then
+				if keys[" "] then
+					gameState = "game"
 					love.load()
+				elseif keys["h"] then
+					gameState = "highscores"
 				end
 			end
 			hand.update(dt)
-		end
-	elseif gameState == "highscores" then
-		if keys[" "] then
-			gameState = "game"
-			love.load()
 		end
 	end
 	TEsound.cleanup()
 end
 
 function love.draw()
-						--love.graphics.setCanvas(canvas)
 	if gameState == "title" then
-		love.graphics.print("lololo", 10,10)
-	elseif gameState == "game" then
-		love.graphics.draw(imgBackground,0,0)
-		roach.draw()
-		hand.draw()
-		gas.draw()
-		love.graphics.draw(spray.img, spray.x, spray.y)
-		drawScore()
-		drawHealthBar()
-	elseif gameState == "highscores" then
-		love.graphics.print("potato", 10,10)
+		drawTitle()
+	elseif gameState == "controls" then
+		drawControls()
+	elseif gameState == "game" or gameState == "highscores" then
+		drawGame()
 	end
-						--love.graphics.setCanvas()
-						--love.graphics.setShader(shader)
-						--love.graphics.draw(canvas)
-						--love.graphics.setShader()
+	if gameState == "highscores" then
+		drawHighscores()
+	end
+end
+
+function drawTitle()
+	love.graphics.draw(titleBg,0,0)
+	love.graphics.draw(title,math.sin(globalTime * 10) * 5,math.sin(globalTime * 30) * 5)
+end
+
+function drawControls()
+	love.graphics.draw(titleBg,0,0)
+end 
+
+function drawGame()
+	love.graphics.draw(imgBackground,0,0)
+	roach.draw()
+	hand.draw()
+	gas.draw()
+	love.graphics.draw(spray.img, spray.x, spray.y)
+	drawScore()
+	drawHealthBar()
+end
+
+function drawHighscores()
+	love.graphics.draw(highscoresBg,0,0)
+	love.graphics.setColor(0,0,0)
+	love.graphics.setFont(title_font)
+	love.graphics.print("Highscores", 450, 80)
+	love.graphics.setFont(text_font)
+	for i, iscore, name in highscore() do
+		if iscore == math.floor(score) then
+			if globalTime%0.5 > 0.25 then
+				love.graphics.print(i .. ". " .. iscore , 450, i * 65 + 110)
+			end
+		else
+			love.graphics.print(i .. ". " .. iscore , 450, i * 65 + 110)
+		end
+	end
+
+	love.graphics.setColor(255,255,255)
 end
 
 
 
 function drawHealthBar()
-	love.graphics.setColor(255,0,0)
+	love.graphics.setColor(20,20,20)
+	love.graphics.rectangle("fill", 3, 3,204, 24)
+	love.graphics.setColor(255,64,79)
 	love.graphics.rectangle("fill", 5, 5,200, 20)
-	love.graphics.setColor(255,255,255)
 	if (roach.health > 25 or globalTime%0.5 > 0.25) then
-		love.graphics.setColor(0,255,0)
+		love.graphics.setColor(0,255,133)
 		love.graphics.rectangle("fill", 5, 5, math.max(1,roach.health/100 * 200), 20)
 	end
 	love.graphics.setColor(255,255,255)
@@ -150,23 +177,29 @@ end
 function drawScore()
 	local sc = math.floor(score)
 	love.graphics.setColor(0,0,0)
+	love.graphics.setFont(text_font)
 	love.graphics.printf(sc,1100,15,32,"center")
-	love.graphics.print("Highscores", 10, 35)
-	for i, score, name in highscore() do
-		love.graphics.print(score, 10, i * 15 + 40)
-	end
-	love.graphics.printf(math.floor(spray.currentSpeed),500,15,100,"center")
-	love.graphics.printf(math.floor(hand.fallSpeed),500,25,100,"center")
-	love.graphics.setColor(255,255,255)
 end
 function love.keypressed(key)
 	if key == "p" then isPaused = not isPaused end
+	if key == "escape" then
+	      love.event.push("quit")    
+	end
 	if type(keys[key]) ~= nil then
 		keys[key] = true
 	end
 end
 
 function love.keyreleased(key)
+	if gameState == "title" then
+		if keys[" "] then
+			gameState = "controls"
+		end
+	elseif gameState == "controls" then
+		if keys[" "] then
+			gameState = "game"
+		end
+	end
 	if type(keys[key]) ~= nil then
 		keys[key] = false
 	end

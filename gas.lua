@@ -4,20 +4,18 @@ function gas.loadAssets()
 	gas.width = 70
 	gas.height = 70
 	gas.img = love.graphics.newImage("assets/gas.gif")
-	--gas.sprites = {}
-	--gas.sprites[1] = love.graphics.newQuad(0, 0, gas.width, gas.height, gas.img:getDimensions())
-	--gas.sprites[2] = love.graphics.newQuad(gas.width, 0, gas.width, gas.height, gas.img:getDimensions())
-	--gas.sprites[3] = love.graphics.newQuad(gas.width*2, 0, gas.width, gas.height, gas.img:getDimensions())
 end
 
 function gas.init()
 	gas.blobs = {}
-	--gas.actualsprite = 1
-	--gas.height = gas.img:getHeight()
-	--gas.width = gas.img:getWidth()
+	gas.timeSinceLastSpray = 0
 end
 
 function gas.throw(pos, duration)
+	if (gas.timeSinceLastSpray > 0.2) then
+		TEsound.play("assets/spray.wav", "sfx")
+		gas.timeSinceLastSpray = 0
+	end
 	local newThrow = {}
 	newThrow.pos = pos
 	newThrow.duration = duration
@@ -27,6 +25,7 @@ function gas.throw(pos, duration)
 end
 
 function gas.update(dt) 
+	gas.timeSinceLastSpray =  gas.timeSinceLastSpray + dt
 	for i=#gas.blobs,1,-1 do
 		gas.blobs[i].duration = gas.blobs[i].duration - dt
 		if (gas.blobs[i].duration <= 0) then
@@ -36,17 +35,6 @@ function gas.update(dt)
 		 	end
 		end
 	end
-
-	--[[local temp_frame = (love.timer.getTime()*100)%480
-			if temp_frame > 320 then
-				gas.actualsprite = 2
-			elseif temp_frame > 240 then
-				gas.actualsprite = 1
-			elseif temp_frame > 120 then
-					gas.actualsprite = 3
-			else -- temp_frame <= 120
-					gas.actualsprite = 1
-			end]]--
 end
 
 function gas.draw() 
@@ -54,7 +42,6 @@ function gas.draw()
 		local pos = gas.blobs[i].pos
 		local rot = gas.blobs[i].rot
 		love.graphics.setColor(255,255,255,gas.blobs[i].alpha)
-		--love.graphics.draw(gas.img, gas.sprites[gas.actualsprite], pos, groundHeight - gas.height/2, rot, 1, 1)
 		love.graphics.draw(gas.img, pos, groundHeight - gas.height/2, rot, 1, 1, gas.height/2, gas.height/2)
 	end
 	love.graphics.setColor(255,255,255,255)
@@ -84,7 +71,6 @@ function gas.checkRoach()
 				if(pt.y > bottom) then pt.y = bottom; end
 				if(pt.y < top) then pt.y = top; end
 
-				--print(distance(pt, center))
 				if(distance(pt, center) < gas.width/2) then 
 					return true;
 				end

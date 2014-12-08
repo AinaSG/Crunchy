@@ -102,16 +102,8 @@ function hand.update(dt)
 		if (hand.y + hand.height > roach.y + roach.offset and math.abs(roachPos - fingerPos) < (roach.width + hand.fingerSize)/2.1) then
 				roach.health = 0
 				if (roach.state ~= "dead") then
-					print("let the blood beggin")
-					roach.pauseSound()
-					system:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
-					system:start()
-					system2:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
-					system2:start()
-				--elseif roach.y < groundHeight - roach.height then
-					--roach.y = math.min(groundHeight - roach.height, (hand.y + hand.height) - roach.offset)
+					roach.die(true)
 				end
-				roach.state = "dead"
 			end
 		if (hand.y > groundHeight - hand.height) then
 			hand.y = groundHeight - hand.height

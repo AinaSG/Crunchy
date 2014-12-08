@@ -20,7 +20,7 @@ function spray.init()
 	spray.currentLenght = 0
 	spray.minTime = 3
 
-	spray.normalHeight = scHeight - spray.height + 650
+	spray.normalHeight = scHeight - spray.height + 700--650
 	spray.x = 0
 	spray.y = spray.normalHeight
 end

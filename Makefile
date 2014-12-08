@@ -4,8 +4,8 @@ all: love
 
 love: *.lua $(ASSET_FILES)
 	rm -f  *.love
-	zip kr *.lua assets/*
-	mv kr.zip kr.love
+	zip kawaii-roach *.lua assets/*
+	mv kawaii-roach.zip kawaii-roach.love
 	make launch
 launch:
-	love kr.love &
+	love kawaii-roach.love &

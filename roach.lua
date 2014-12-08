@@ -10,6 +10,7 @@ function roach.loadAssets()
 	roach.sprites[1] = love.graphics.newQuad(0, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[2] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[3] = love.graphics.newQuad(roach.width*2, 0, roach.width, roach.height, roach.img:getDimensions())
+	roach.sprites[4] = love.graphics.newQuad(roach.width*3, 0, roach.width, roach.height, roach.img:getDimensions())
 	TEsound.playLooping("assets/roach-move.mp3", "roachsound")
 	TEsound.pause("roachsound")
 end
@@ -27,6 +28,20 @@ function roach.init()
 	roach.soundIsPlaying = false;
 	roach.health = 100
 	roach.actualsprite = 1
+end
+
+
+function roach.die(fromHand)
+	if fromHand then
+		system:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
+		system:start()
+		system2:setPosition( hand.x + hand.fingerOffset, hand.y + hand.height )
+		system2:start()
+		if roach.state ~= "dead" then TEsound.play("assets/splat.wav", "sfx") end
+	end
+	if roach.soundIsPlaying then roach.pauseSound() end
+	roach.state = "dead"
+	roach.actualsprite = 4
 end
 
 function roach.jump()
