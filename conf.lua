@@ -1,5 +1,5 @@
 function love.conf(t)
-    t.title = "Kawaii Roach"        -- The title of the window the game is in (string)
+    t.title = "Crunchy - The Kawaii Roach"        -- The title of the window the game is in (string)
     t.author = "Aina i Joan"        -- The author of the game (string)
     t.identity = nil            -- The name of the save directory (string)
     t.version = "0.9.1"         -- The LÖVE version this game was made for (number)
