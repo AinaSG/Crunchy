@@ -1,6 +1,10 @@
 Crunchy - The Kawaii Roach
 ============
 
+Our Ludum Dare 31 entry!
+http://ludumdare.com
+
+
 Made with LÖVE 2D
 http://love2d.org/
 
