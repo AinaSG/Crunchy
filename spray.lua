@@ -7,11 +7,16 @@ function spray.loadAssets()
 end
 
 function spray.init()
-	spray.speed = 500
-	spray.currentSpeed = 500
-	
-	spray.timeForNextGas = 5
-	spray.gasLength = love.math.random(3,5)
+	spray.speed = 450
+	spray.currentSpeed = 450
+	spray.maxSpeed = 600
+
+	spray.minGasTime = 1
+	spray.maxGasTime = 2
+	spray.minGasDelay = 3
+	spray.maxGasDelay = 6
+	spray.timeForNextGas = floatRand(spray.minGasDelay, spray.maxGasDelay)
+	spray.gasLength = love.math.random(1,3)
 	spray.currentLenght = 0
 	spray.minTime = 3
 
@@ -21,21 +26,25 @@ function spray.init()
 end
 
 function spray.update(dt)
+	if (spray.currentSpeed < spray.maxSpeed) then
+		spray.currentSpeed = spray.currentSpeed + dt
+	end
+
 	local roachPos = roach.x + roach.width/2
 	local sprayPos = spray.x + spray.width/2
 	
 	if (roach.y + roach.height > groundHeight - gas.height
 		and math.abs((spray.x + spray.width/2) - (roach.x + roach.width/2)) < roach.width/4) then
-			gas.throw(spray.x + spray.width/2, love.math.random(0,5000)/1000 + 1)
+			gas.throw(spray.x + spray.width/2, floatRand(spray.minGasTime, spray.maxGasTime))
 	else 
 		spray.timeForNextGas = spray.timeForNextGas - dt
 		if (spray.timeForNextGas <= 0) then
 			if (spray.currentLenght <= spray.gasLength) then
-				gas.throw(spray.x + spray.width/2, love.math.random(0,5000)/1000 + 1)
+				gas.throw(spray.x + spray.width/2, floatRand(spray.minGasTime, spray.maxGasTime))
 				spray.currentLenght = spray.currentLenght + 1
 			else
 				spray.gasLength = love.math.random(3,5) 
-				spray.timeForNextGas = love.math.random(0, 2*1000)/1000 + spray.minTime
+				spray.timeForNextGas = floatRand(spray.minGasDelay, spray.maxGasDelay)
 			end
 		else 
 			spray.currentLenght = 0

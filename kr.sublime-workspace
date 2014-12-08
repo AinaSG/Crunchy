@@ -87,7 +87,7 @@
 			"file": "roach.lua",
 			"settings":
 			{
-				"buffer_size": 3486,
+				"buffer_size": 3538,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +95,7 @@
 			"file": "hand.lua",
 			"settings":
 			{
-				"buffer_size": 3605,
+				"buffer_size": 3629,
 				"line_ending": "Unix"
 			}
 		},
@@ -192,6 +192,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pause",
 			"death",
 			"hand.speed",
 			"tab",
@@ -272,15 +273,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3486,
+						"buffer_size": 3538,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3486,
-								3486
+								2924,
+								2924
 							]
 						],
 						"settings":
@@ -289,7 +290,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1070.0,
+						"translation.y": 1669.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -301,15 +302,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3605,
+						"buffer_size": 3629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2246,
-								2246
+								2857,
+								2857
 							]
 						],
 						"settings":
@@ -318,7 +319,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1020.0,
+						"translation.y": 1326.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

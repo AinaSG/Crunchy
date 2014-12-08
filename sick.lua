@@ -34,6 +34,10 @@ print(#h.scores)
 	table.sort(h.scores, sortScore)
 end
 
+function h.clear()
+	return love.filesystem.remove(h.filename)
+end
+
 function h.save()
 	local file = love.filesystem.newFile(h.filename)
 	if not file:open("w") then return end

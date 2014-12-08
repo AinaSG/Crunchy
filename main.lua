@@ -6,8 +6,11 @@ require "sick"
 
 require("TEsound") --Llibreria per a controlar so
 TEsound.playLooping("assets/fight.ogg", "music")
+TEsound.volume("music", 0.3)
 
-
+function floatRand(min,max)
+	return love.math.random(0, (max-min)*1000000)/1000000 + min
+end
 
 groundHeight = 460
 scWidth = 1200
@@ -16,7 +19,7 @@ scMargin = 20
 scStart = scMargin
 scEnd = scWidth - scMargin
 gravity = 2800
-score = 0
+gameState = "title"
 
 
 function loadAssets()
@@ -39,6 +42,7 @@ function initKeys()
 end
 
 function love.load()
+
 							--canvas = love.graphics.newCanvas(64,64)
 							--local str = love.filesystem.read('Shaders Locos/CTR.frag')
 							--shader = love.graphics.newShader(str)
@@ -46,7 +50,7 @@ function love.load()
 							--shader:send('textureSize', {love.graphics.getWidth(), love.graphics.getHeight()})
 
 	highscore.set("scores", 3, "", 0)
-
+	score = 0
 	isPaused = false
 	finishedGame = false
 	globalTime = 0
@@ -62,42 +66,68 @@ function love.load()
 end
 
 function love.update(dt)
-	if not isPaused then
-		globalTime = globalTime + dt
-		spray.update(dt)
-		gas.update(dt)
+	if gameState == "title" then
+		if keys[" "] then
+			gameState = "game"
+		end
+	elseif gameState == "game" then
+		if not isPaused then
+			globalTime = globalTime + dt
+			spray.update(dt)
+			gas.update(dt)
 
-		if (roach.health > 0) then
-			score = score + dt* 12
-			roach.update(dt)
-		else 
-			roach.state = "dead"
-			if not finishedGame then
-				local sc = math.floor(score)
-				highscore.add("", sc)
+			if (roach.health > 0) then
+				score = score + dt* 12
+				roach.update(dt)
+			else 
+				roach.state = "dead"
+				if not finishedGame then
+					finishedGame = true
+					local sc = math.floor(score)
+					local lastSc
+					for i, score, name in highscore() do
+						lastSc = score
+					end
+					if (sc > lastSc) then
+						gameState = "highscores"
+						print("new highscore!!")
+					end
+					highscore.add("", sc)
+					highscore.save()
+				end
+				if roach.y + roach.height < groundHeight then
+					roach.y = math.min(groundHeight - roach.height, roach.y + (hand.fallSpeed * dt))
+				end
+				if (keys[" "]) then
+					love.load()
+				end
 			end
-			if roach.y + roach.height < groundHeight then
-				roach.y = math.min(groundHeight - roach.height, roach.y + (hand.fallSpeed * dt))
-			end
-			if (keys[" "]) then
+			hand.update(dt)
+		end
+	elseif gameState == "highscores" then
+		if keys[" "] then
+			gameState = "game"
 			love.load()
 		end
-		end
-
-		hand.update(dt)
-		TEsound.cleanup()
 	end
+	TEsound.cleanup()
 end
 
 function love.draw()
 						--love.graphics.setCanvas(canvas)
-	love.graphics.draw(imgBackground,0,0)
-	roach.draw()
-	hand.draw()
-	gas.draw()
-	love.graphics.draw(spray.img, spray.x, spray.y)
-	drawScore()
-	drawHealthBar()
+	if gameState == "title" then
+		love.graphics.print("lololo", 10,10)
+	elseif gameState == "game" then
+		love.graphics.draw(imgBackground,0,0)
+		roach.draw()
+		hand.draw()
+		gas.draw()
+		love.graphics.draw(spray.img, spray.x, spray.y)
+		drawScore()
+		drawHealthBar()
+	elseif gameState == "highscores" then
+		love.graphics.print("potato", 10,10)
+	end
 						--love.graphics.setCanvas()
 						--love.graphics.setShader(shader)
 						--love.graphics.draw(canvas)
@@ -118,10 +148,16 @@ function drawHealthBar()
 end
 
 function drawScore()
-	 local sc = math.floor(score)
-	 love.graphics.setColor(0,0,0)
-	 love.graphics.printf(sc,1100,15,32,"center")
-	 love.graphics.setColor(255,255,255)
+	local sc = math.floor(score)
+	love.graphics.setColor(0,0,0)
+	love.graphics.printf(sc,1100,15,32,"center")
+	love.graphics.print("Highscores", 10, 35)
+	for i, score, name in highscore() do
+		love.graphics.print(score, 10, i * 15 + 40)
+	end
+	love.graphics.printf(math.floor(spray.currentSpeed),500,15,100,"center")
+	love.graphics.printf(math.floor(hand.fallSpeed),500,25,100,"center")
+	love.graphics.setColor(255,255,255)
 end
 function love.keypressed(key)
 	if key == "p" then isPaused = not isPaused end

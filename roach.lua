@@ -2,7 +2,6 @@ roach = {}
 roach.width = 84
 roach.offset = 41
 roach.height = 108
-groundHeight = 460
 
 function roach.loadAssets()
 	--roach.img = love.graphics.newImage("assets/snowmant.png") 
@@ -70,6 +69,7 @@ function roach.draw()
 	else
 		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, -1, 1, roach.width)
 	end
+
 end
 
 function roach.update(dt)
