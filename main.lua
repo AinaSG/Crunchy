@@ -185,7 +185,7 @@ function drawScore()
 	love.graphics.printf(sc,1100,15,32,"center")
 end
 function love.keypressed(key)
-	if key == "p" then isPaused = not isPaused end
+	--if key == "p" then isPaused = not isPaused end
 	if key == "escape" then
 	      love.event.push("quit")    
 	end
