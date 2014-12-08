@@ -8,6 +8,8 @@ require("TEsound") --Llibreria per a controlar so
 
 highscore.set("scores", 5, "", 0)
 TEsound.playLooping("assets/fight.ogg", "music")
+TEsound.playLooping("assets/roach-move.mp3", "roachsound")
+TEsound.pause("roachsound")
 TEsound.volume("music", 0.3)
 
 function floatRand(min,max)
@@ -28,6 +30,7 @@ function loadAssets()
 	imgBackground = love.graphics.newImage("assets/background.png")
 	titleBg = love.graphics.newImage("assets/titlebg.png")
 	title = love.graphics.newImage("assets/title.png")
+	controls = love.graphics.newImage("assets/controls.png")
 	highscoresBg = love.graphics.newImage("assets/postit.png")
 	title_font = love.graphics.newFont("assets/ComingSoon.ttf",65)
 	text_font = love.graphics.newFont("assets/ComingSoon.ttf",48)
@@ -124,11 +127,12 @@ end
 
 function drawTitle()
 	love.graphics.draw(titleBg,0,0)
-	love.graphics.draw(title,math.sin(globalTime * 10) * 5,math.sin(globalTime * 30) * 5)
+	love.graphics.draw(title,math.sin(globalTime * 10) * 5,math.cos(globalTime * 30) * 5)
 end
 
 function drawControls()
 	love.graphics.draw(titleBg,0,0)
+	love.graphics.draw(controls,math.sin(globalTime * 10) * 5,math.cos(globalTime * 30) * 5)
 end 
 
 function drawGame()
@@ -200,6 +204,12 @@ function love.keyreleased(key)
 			gameState = "game"
 		end
 	end
+	
+	if key == "l" and gameState == "game" then
+		roach.loadAssets(not roach.isSnowMan)
+		hand.initblood(roach.isSnowMan)
+	end
+	
 	if type(keys[key]) ~= nil then
 		keys[key] = false
 	end

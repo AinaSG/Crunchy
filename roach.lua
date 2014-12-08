@@ -3,16 +3,18 @@ roach.width = 84
 roach.offset = 41
 roach.height = 108
 
-function roach.loadAssets()
-	--roach.img = love.graphics.newImage("assets/snowmant.png") 
-	roach.img = love.graphics.newImage("assets/blushed3.png")
+function roach.loadAssets(snowman)
+	if snowman then
+		roach.img = love.graphics.newImage("assets/snowmant.png")
+	else
+		roach.img = love.graphics.newImage("assets/blushed3.png")
+	end
+	roach.isSnowMan = snowman or false
 	roach.sprites = {}
 	roach.sprites[1] = love.graphics.newQuad(0, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[2] = love.graphics.newQuad(roach.width, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[3] = love.graphics.newQuad(roach.width*2, 0, roach.width, roach.height, roach.img:getDimensions())
 	roach.sprites[4] = love.graphics.newQuad(roach.width*3, 0, roach.width, roach.height, roach.img:getDimensions())
-	TEsound.playLooping("assets/roach-move.mp3", "roachsound")
-	TEsound.pause("roachsound")
 end
 
 function roach.init()
@@ -28,6 +30,7 @@ function roach.init()
 	roach.soundIsPlaying = false;
 	roach.health = 100
 	roach.actualsprite = 1
+	roach.direction = 1
 end
 
 
@@ -55,12 +58,14 @@ function roach.moveRight(dt)
 	roach.xSpeed = roach.xSpeed + (roach.runSpeed * dt)
 	roach.xSpeed = math.min(roach.xSpeed, roach.runSpeed)
 	roach.state = "moveRight"
+	roach.direction = -1
 end
 
 function roach.moveLeft(dt)
 	roach.xSpeed = roach.xSpeed - (roach.runSpeed * dt)
 	roach.xSpeed = math.max(roach.xSpeed, -roach.runSpeed)
 	roach.state = "moveLeft"
+	roach.direction = 1
 end
 
 function roach.stop()
@@ -79,7 +84,7 @@ function roach.pauseSound()
 end
 
 function roach.draw()
-	if (roach.state == "moveLeft" ) then 
+	if (roach.direction == 1 ) then 
 		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, 1, 1)
 	else
 		love.graphics.draw(roach.img, roach.sprites[roach.actualsprite], roach.x, roach.y, 0, -1, 1, roach.width)
